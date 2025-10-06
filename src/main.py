@@ -12,6 +12,10 @@ class Main:
         self.game = Game()
 
     def mainloop(self):
+
+        game = self.game
+        screen = self.screen
+
         while True:
             self.game.show_bg(self.screen)
 
