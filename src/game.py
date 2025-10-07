@@ -11,9 +11,9 @@ class Game:
         for row in range(ROWS):
             for col in range(COLS):
                 if (row + col) % 2 == 0:
-                    color = (212, 175, 55)  # Gold
+                    color = (242, 225, 195)  # Gold
                 else:
-                    color = (40, 40, 40)  # light Black
+                    color = (195, 160, 130)  # light Black
 
                 rect = (col * SQSIZE, row * SQSIZE, SQSIZE, SQSIZE)
 
