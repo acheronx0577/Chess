@@ -9,6 +9,48 @@ class Board:
         self._add_pieces('white')
         self._add_pieces('black')
 
+    def calc_moves(self, piece, row, col):
+        # Calculate all the possible valid moves of an specific piece on a specific position
+
+        def knight_moves():
+            # 8 Possible moves
+            possible_moves = [
+                (row - 2, col + 1),
+                (row - 1, col + 2),
+                (row + 1, col + 2),
+                (row + 2, col + 1),
+                (row + 2, col - 1),
+                (row + 1, col - 2),
+                (row - 1, col - 2),
+                (row - 2, col - 1),
+            ]
+
+            for possible_moves in possible_moves:
+                possible_moves_row, possible_moves_col = possible_moves
+                
+                if Square.in_range(possible_moves_row, possible_moves_col):
+                    if self.squares[possible_moves_row][possible_moves_col].isempty_or_rival(piece.color):
+                        # Create a new move
+                        pass
+
+        if isinstance(piece, Pawn):
+            pass
+
+        elif isinstance(piece, Knight):
+            knight_moves()
+
+        elif isinstance(piece, Bishop):
+            pass
+
+        elif isinstance(piece, Rook):
+            pass
+
+        elif isinstance(piece, Queen):
+            pass
+
+        elif isinstance(piece, King):
+            pass
+
     def _create(self):
         for row in range(ROWS):
             for col in range(COLS):
