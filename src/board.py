@@ -13,6 +13,35 @@ class Board:
     def calc_moves(self, piece, row, col):
         # Calculate all the possible valid moves of an specific piece on a specific position
 
+        def pawn_moves():
+            # Steps
+            steps = 1 if piece.moved else 2
+
+            # Vertical moves
+            start = row + piece.dir
+            end = row + (piece.dir * (1 + steps))
+            for move_row in range(start, end, piece.dir):
+                if Square.in_range(move_row):
+                    if self.squares[move_row][col].isempty():
+                        # Create initial and final squares
+                        initial = Square(row, col)
+                        final = Square(move_row, col)
+
+                        # Create a new move
+                        move = Move(initial, final)
+                        piece.add_move(move)
+                    # Blocked
+                    else:
+                        break
+                # Not in range
+                else:
+                    break
+                
+            # Diagonal moves
+
+
+
+
         def knight_moves():
             # 8 Possible moves
             possible_moves = [
@@ -40,7 +69,7 @@ class Board:
                         piece.add_move(move)
 
         if isinstance(piece, Pawn):
-            pass
+            pawn_moves()
 
         elif isinstance(piece, Knight):
             knight_moves()
