@@ -128,27 +128,27 @@ class Board:
                 (-1, 1), # Up - Right
                 (-1, -1), # Up - Left
                 (1, 1), # Down - Right
-                (1, -1) # Down - Left
+                (1, -1), # Down - Left
             ])
 
         elif isinstance(piece, Rook):
-            straightline_moves(
+            straightline_moves([
                 (-1, 0), # Up
                 (0, 1), # Right       
                 (1, 0), # Down
-                (0, -1) # Left
-            )
+                (0, -1), # Left
+            ])
 
         elif isinstance(piece, Queen):
             straightline_moves([
                 (-1, 1),  # Up - Right
                 (-1, -1),  # Up - Left
                 (1, 1),  # Down - Right
-                (1, -1)  # Down - Left
+                (1, -1),  # Down - Left
                 (-1, 0),  # Up
                 (0, 1),  # Right
                 (1, 0),  # Down
-                (0, -1)  # Left
+                (0, -1),  # Left
             ])
 
         elif isinstance(piece, King):
@@ -170,7 +170,7 @@ class Board:
         self.squares[row_other][1] = Square(row_other, 1, Knight(color))
         self.squares[row_other][6] = Square(row_other, 6, Knight(color))
 
-        # Rooks (you're missing these!)
+        # Rooks 
         self.squares[row_other][0] = Square(row_other, 0, Rook(color))
         self.squares[row_other][7] = Square(row_other, 7, Rook(color))
 
