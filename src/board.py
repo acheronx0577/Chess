@@ -38,9 +38,21 @@ class Board:
                     break
                 
             # Diagonal moves
+            possible_move_row = row + piece.dir
+            possible_move_cols = [col - 1, col + 1]
 
+            for possible_move_col in possible_move_cols:
+                if Square.in_range(possible_move_row, possible_move_col):
+                    if self.squares[possible_move_row][possible_move_col].has_enemy_piece(piece.color):
+                        # Create initial and final squares
+                        initial = Square(row, col)
+                        final = Square(possible_move_row, possible_move_col)
 
+                        # Create a new move
+                        move = Move(initial, final)
 
+                        # Append new move
+                        piece.add_move(move)
 
         def knight_moves():
             # 8 Possible moves
@@ -59,7 +71,7 @@ class Board:
                 possible_moves_row, possible_moves_col = possible_moves
                 
                 if Square.in_range(possible_moves_row, possible_moves_col):
-                    if self.squares[possible_moves_row][possible_moves_col].isempty_or_rival(piece.color):
+                    if self.squares[possible_moves_row][possible_moves_col].isempty_or_enemy(piece.color):
                         # Create square of the new move
                         initial = Square(row, col)
                         final = Square(possible_moves_row, possible_moves_col) # Piece = Piece
