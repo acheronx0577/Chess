@@ -284,13 +284,13 @@ class Board:
         def king_moves():
             adjs = [
                 (row - 1, col + 0), # Up
-                (row - 1, col + 1), # Up-right
+                (row - 1, col + 1), # Up - right
                 (row + 0, col + 1), # Right
-                (row + 1, col + 1), # Down-right
+                (row + 1, col + 1), # Down - right
                 (row + 1, col + 0), # Down
-                (row + 1, col - 1), # Down-left
+                (row + 1, col - 1), # Down - left
                 (row + 0, col - 1), # Left
-                (row - 1, col - 1), # Up-left
+                (row - 1, col - 1), # Up - left
             ]
 
             # normal moves
