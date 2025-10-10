@@ -105,7 +105,7 @@ class Main:
                     
                     dragger.undrag_piece()
                 
-                # key press
+                # Key press
                 elif event.type == pygame.KEYDOWN:
                     
                     # changing themes
