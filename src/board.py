@@ -396,10 +396,10 @@ class Board:
 
         elif isinstance(piece, Bishop): 
             straightline_moves([
-                (-1, 1), # Up-right
-                (-1, -1), # Up-left
-                (1, 1), # Down-right
-                (1, -1), # Down-left
+                (-1, 1), # Up - right
+                (-1, -1), # Up - left
+                (1, 1), # Down - right
+                (1, -1), # Down - left
             ])
 
         elif isinstance(piece, Rook): 
@@ -412,10 +412,10 @@ class Board:
 
         elif isinstance(piece, Queen): 
             straightline_moves([
-                (-1, 1), # Up-right
-                (-1, -1), # Up-left
-                (1, 1), # Down-right
-                (1, -1), # DDown-left
+                (-1, 1), # Up - right
+                (-1, -1), # Up - left
+                (1, 1), # Down - right
+                (1, -1), # DDown - left
                 (-1, 0), # Up
                 (0, 1), # Right
                 (1, 0), # Down
