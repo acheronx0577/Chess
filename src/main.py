@@ -94,9 +94,9 @@ class Main:
 
                             board.set_true_en_passant(dragger.piece)                            
 
-                            # sounds
+                            # Sounds
                             game.play_sound(captured)
-                            # show methods
+                            # Show methods
                             game.show_bg(screen)
                             game.show_last_move(screen)
                             game.show_pieces(screen)

@@ -200,14 +200,14 @@ class Board:
         def knight_moves():
             # 8 possible moves
             possible_moves = [
-                (row-2, col+1),
-                (row-1, col+2),
-                (row+1, col+2),
-                (row+2, col+1),
-                (row+2, col-1),
-                (row+1, col-2),
-                (row-1, col-2),
-                (row-2, col-1),
+                (row - 2, col + 1),
+                (row - 1, col + 2),
+                (row + 1, col + 2),
+                (row + 2, col + 1),
+                (row + 2, col - 1),
+                (row + 1, col - 2),
+                (row - 1, col - 2),
+                (row - 2, col - 1),
             ]
 
             for possible_move in possible_moves:
@@ -283,14 +283,14 @@ class Board:
 
         def king_moves():
             adjs = [
-                (row-1, col+0), # up
-                (row-1, col+1), # up-right
-                (row+0, col+1), # right
-                (row+1, col+1), # down-right
-                (row+1, col+0), # down
-                (row+1, col-1), # down-left
-                (row+0, col-1), # left
-                (row-1, col-1), # up-left
+                (row - 1, col + 0), # up
+                (row - 1, col + 1), # up-right
+                (row + 0, col + 1), # right
+                (row + 1, col + 1), # down-right
+                (row + 1, col + 0), # down
+                (row + 1, col - 1), # down-left
+                (row + 0, col - 1), # left
+                (row - 1, col - 1), # up-left
             ]
 
             # normal moves
