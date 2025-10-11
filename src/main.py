@@ -112,6 +112,10 @@ class Main:
                     if event.key == pygame.K_t:
                         game.change_theme()
 
+                    # changing backgrounds with Y
+                    if event.key == pygame.K_y:
+                        game.change_background()
+
                      # changing themes
                     if event.key == pygame.K_r:
                         game.reset()

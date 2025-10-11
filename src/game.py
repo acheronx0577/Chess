@@ -16,37 +16,55 @@ class Game:
         self.config = Config()
 
     # blit methods
-
     def show_bg(self, surface):
         theme = self.config.theme
-        
+
+        # Draw background image (if available)
+        if self.config.background:
+            surface.blit(self.config.background, (0, 0))
+        else:
+            # Fallback to solid color background
+            surface.fill(theme.bg.dark)
+
+        # Draw chess board squares with transparency
         for row in range(ROWS):
             for col in range(COLS):
-                # color
-                color = theme.bg.light if (row + col) % 2 == 0 else theme.bg.dark
-                # rect
-                rect = (col * SQSIZE, row * SQSIZE, SQSIZE, SQSIZE)
-                # blit
-                pygame.draw.rect(surface, color, rect)
+                # Use semi-transparent colors to let background show through
+                if self.config.background:
+                    # Create semi-transparent surfaces for squares
+                    color = theme.bg.light if (
+                        row + col) % 2 == 0 else theme.bg.dark
+                    # Check if color has alpha (RGBA)
+                    if len(color) == 4:  # RGBA color
+                        alpha_surface = pygame.Surface(
+                            (SQSIZE, SQSIZE), pygame.SRCALPHA)
+                        alpha_surface.fill(color)
+                        rect = (col * SQSIZE, row * SQSIZE)
+                        surface.blit(alpha_surface, rect)
+                    else:  # RGB color
+                        rect = (col * SQSIZE, row * SQSIZE, SQSIZE, SQSIZE)
+                        pygame.draw.rect(surface, color, rect)
+                else:
+                    # Original solid color squares
+                    color = theme.bg.light if (
+                        row + col) % 2 == 0 else theme.bg.dark
+                    rect = (col * SQSIZE, row * SQSIZE, SQSIZE, SQSIZE)
+                    pygame.draw.rect(surface, color, rect)
 
                 # row coordinates
                 if col == 0:
-                    # color
                     color = theme.bg.dark if row % 2 == 0 else theme.bg.light
-                    # label
                     lbl = self.config.font.render(str(ROWS-row), 1, color)
                     lbl_pos = (5, 5 + row * SQSIZE)
-                    # blit
                     surface.blit(lbl, lbl_pos)
 
                 # col coordinates
                 if row == 7:
-                    # color
-                    color = theme.bg.dark if (row + col) % 2 == 0 else theme.bg.light
-                    # label
-                    lbl = self.config.font.render(Square.get_alphacol(col), 1, color)
+                    color = theme.bg.dark if (
+                        row + col) % 2 == 0 else theme.bg.light
+                    lbl = self.config.font.render(
+                        Square.get_alphacol(col), 1, color)
                     lbl_pos = (col * SQSIZE + SQSIZE - 20, HEIGHT - 20)
-                    # blit
                     surface.blit(lbl, lbl_pos)
 
     def show_pieces(self, surface):
@@ -114,6 +132,9 @@ class Game:
     def change_theme(self):
         self.config.change_theme()
 
+    def change_background(self):
+        self.config.change_background()
+
     def play_sound(self, captured=False):
         if captured:
             self.config.capture_sound.play()
@@ -122,3 +143,5 @@ class Game:
 
     def reset(self):
         self.__init__()
+
+    
